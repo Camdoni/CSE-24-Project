@@ -10,11 +10,9 @@
 #include "Scribble.h"
 
 class Canvas : public bobcat::Canvas_ {
-    std::vector<Point*> points;
-    // std::vector<Rectangle*> rectangles;
-    // std::vector<Circle*> circles;
-
     std::vector<Shape*> shapes;
+
+    Scribble* curr;
 
 public:
     Canvas(int x, int y, int w, int h);
@@ -28,6 +26,12 @@ public:
     void clear();
 
     void undo();
+
+    void startScribble();
+
+    void updateScribble(float x, float y, float r, float g, float b, int size);
+
+    void endScribble();
 
     void render();
 };

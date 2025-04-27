@@ -5,11 +5,11 @@
 #include <cstdlib>
 
 Canvas::Canvas(int x, int y, int w, int h) : Canvas_(x, y, w, h) {
-
+    curr = nullptr;
 }
 
 void Canvas::addPoint(float x, float y, float r, float g, float b, int size) {
-    points.push_back(new Point(x, y, r, g, b, size));
+    shapes.push_back(new Point(x, y, r, g, b, size));
 }
 
 void Canvas::addRectangle(float x, float y, float r, float g, float b) {
@@ -21,11 +21,6 @@ void Canvas::addCircle(float x, float y, float r, float g, float b) {
 }
 
 void Canvas::clear() {
-    for (unsigned int i = 0 ; i < points.size(); i++) {
-        delete points[i];
-    }
-    points.clear();
-
     for (unsigned int i = 0 ; i < shapes.size(); i++) {
         delete shapes[i];
     }
@@ -33,15 +28,35 @@ void Canvas::clear() {
 }
 
 void Canvas::undo(){
-    // We should undo
+    if (shapes.size() > 0){
+        delete shapes[shapes.size() - 1];
+        shapes.pop_back();
+    }
 }
 
 void Canvas::render() {
-    for (unsigned int i = 0 ; i < points.size(); i++) {
-        points[i]->draw();
-    }
-
     for (unsigned int i = 0 ; i < shapes.size(); i++) {
         shapes[i]->draw();
+    }
+
+    if (curr){
+        curr->draw();
+    }
+}
+
+void Canvas::startScribble(){
+    curr = new Scribble();
+}
+
+void Canvas::updateScribble(float x, float y, float r, float g, float b, int size){
+    if (curr){
+        curr->addPoint(x, y, r, g, b, size);
+    }
+}
+
+void Canvas::endScribble(){
+    if (curr){
+        shapes.push_back(curr);
+        curr = nullptr;
     }
 }

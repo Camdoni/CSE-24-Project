@@ -3,7 +3,7 @@
 
 #include "Shape.h"
 
-class Point {
+class Point: public Shape {
     float x;
     float y;
     float r;
