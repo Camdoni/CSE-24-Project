@@ -65,18 +65,18 @@ void Application::onToolbarChange(bobcat::Widget* sender) {
 Application::Application() {
     window = new Window(100, 100, 400, 400, "Pain Application");
 
-    toolbar = new Toolbar(0, 0, 50, 350);
+    toolbar = new Toolbar(0, 0, 50, 400);
     canvas = new Canvas(50, 0, 350, 350);
     colorSelector = new ColorSelector(50, 350, 350, 50);
     colorSelector->box(FL_BORDER_BOX);
 
-    window->add(toolbar);
+    // window->add(toolbar);
     window->add(canvas);
     window->add(colorSelector);
 
-    ON_MOUSE_DOWN(canvas, Application::onCanvasMouseDown);
-    ON_DRAG(canvas, Application::onCanvasDrag);
-    ON_CHANGE(toolbar, Application::onToolbarChange);
-    ON_MOUSE_UP(canvas, Application::onCanvasMouseUp);
+    // ON_MOUSE_DOWN(canvas, Application::onCanvasMouseDown);
+    // ON_DRAG(canvas, Application::onCanvasDrag);
+    // ON_CHANGE(toolbar, Application::onToolbarChange);
+    // ON_MOUSE_UP(canvas, Application::onCanvasMouseUp);
     window->show();
 }
