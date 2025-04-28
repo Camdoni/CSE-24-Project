@@ -33,10 +33,15 @@ void Triangle::draw() {
 }
 
 void Triangle::IncreaseSize() {
-    base += 0.1;       
+    base += 0.1;  
+    height += 0.1;  
 }
 void Triangle::DecreaseSize() {
     base -= 0.1;
+    height -= 0.1;
+    if (height < 0.1) {
+        height = 0.1;
+    }
     if (base < 0.1) {
         base = 0.1;
     }

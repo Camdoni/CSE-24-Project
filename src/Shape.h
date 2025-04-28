@@ -6,7 +6,6 @@
 
 // Abstract Data Type
 class Shape{
-
 public:
     // This function is now pure virtual
     virtual void draw() = 0;

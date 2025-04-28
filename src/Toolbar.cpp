@@ -10,7 +10,6 @@ void Toolbar::deselectAllTools() {
     rectangleButton->color(FL_BACKGROUND_COLOR);
     mouseButton->color(FL_BACKGROUND_COLOR);
     polygonButton->color(FL_BACKGROUND_COLOR);
-
 }
 
 void Toolbar::visualizeSelectedTool() {
@@ -136,4 +135,6 @@ Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
     ON_CLICK(minusButton,Toolbar::onClick); 
     ON_CLICK(polygonButton,Toolbar::onClick);
     ON_CLICK(mouseButton,Toolbar::onClick);
+    ON_CLICK(sendToBackButton,Toolbar::onClick);
+    ON_CLICK(bringToFrontButton,Toolbar::onClick);
 }

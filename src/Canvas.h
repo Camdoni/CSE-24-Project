@@ -10,16 +10,19 @@
 #include "Scribble.h"
 
 class Canvas : public bobcat::Canvas_ {
-    std::vector<Shape*> shapes;
-
     Scribble* curr;
 
 public:
+    std::vector<Shape*> shapes;
+
     Canvas(int x, int y, int w, int h);
+
 
     void addPoint(float x, float y, float r, float g, float b, int size);
 
     void addRectangle(float x, float y, float r, float g, float b);
+
+    void addPolygon(float x, float y, float r, float g, float b);
 
     void addCircle(float x, float y, float r, float g, float b);
     
