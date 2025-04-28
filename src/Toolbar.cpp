@@ -8,6 +8,9 @@ void Toolbar::deselectAllTools() {
     circleButton->color(FL_BACKGROUND_COLOR);
     triangleButton->color(FL_BACKGROUND_COLOR);
     rectangleButton->color(FL_BACKGROUND_COLOR);
+    mouseButton->color(FL_BACKGROUND_COLOR);
+    polygonButton->color(FL_BACKGROUND_COLOR);
+
 }
 
 void Toolbar::visualizeSelectedTool() {
@@ -25,6 +28,12 @@ void Toolbar::visualizeSelectedTool() {
     }
     else if (tool == RECTANGLE) {
         rectangleButton->color(FL_WHITE);
+    }
+    else if (tool == SELECT) {
+        mouseButton->color(FL_WHITE);
+    }
+    else if (tool == POLYGON) {
+        polygonButton->color(FL_WHITE);
     }
 }
 
@@ -48,11 +57,27 @@ void Toolbar::onClick(bobcat::Widget* sender) {
     else if (sender == rectangleButton) {
         tool = RECTANGLE;
     }
-
+    else if (sender == polygonButton) {
+        tool = POLYGON;
+    }
+    else if (sender == mouseButton) {
+        tool = SELECT;
+    }
     else if (sender == clearButton) {
         action = CLEAR;
     }
-
+    else if (sender == sendToBackButton) {
+        action = SEND_TO_BACK;
+    }
+    else if (sender == bringToFrontButton) {
+        action = SEND_TO_FRONT;
+    }
+    else if (sender == plusButton) {
+        action = SIZE_INCREASE;
+    }
+    else if (sender == minusButton) {
+        action = SIZE_DECREASE;
+    }
     if (onChangeCb) {
         onChangeCb(this);
     }
