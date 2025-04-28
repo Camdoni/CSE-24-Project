@@ -18,6 +18,10 @@ public:
     Point(float x, float y, float r, float g, float b, int size);
 
     void draw();
+    void IncreaseSize();
+    void DecreaseSize();
+    bool CollidePoint(float,float);
+
 
     float getX() const;
     float getY() const;
@@ -25,6 +29,7 @@ public:
     float getG() const;
     float getB() const;
     int getSize() const;
+
 };
 
 #endif

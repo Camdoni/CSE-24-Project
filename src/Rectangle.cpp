@@ -31,3 +31,20 @@ void Rectangle::draw() {
         glVertex2f(x - width/2, y - height/2);
     glEnd();
 }
+void Rectangle::IncreaseSize() {
+    width += 0.1;
+    height += 0.1;
+}
+void Rectangle::DecreaseSize() {
+    width -= 0.1;
+    if (width < 0.1) {
+        width = 0.1;
+    }
+    height -= 0.1;
+    if (height < 0.1) {
+        height = 0.1;
+    }
+}
+bool Rectangle::CollidePoint(float x, float y) {
+    return (abs(x - this->x) <= width / 2) && (abs(y- this->y) <= height / 2);
+}

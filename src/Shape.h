@@ -11,6 +11,9 @@ public:
     // This function is now pure virtual
     virtual void draw() = 0;
 
+    virtual void IncreaseSize() = 0;
+    virtual void DecreaseSize() = 0;
+    virtual bool CollidePoint(float,float) = 0;
     // Since Shape contains at least one pure virtual function
     // Shape is an Abstract Data Type
 

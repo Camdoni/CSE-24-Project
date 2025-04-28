@@ -1,4 +1,5 @@
 #include "Scribble.h"
+#include <cmath>
 
 void Scribble::addPoint(float x, float y, float r, float g, float b, int size){
     points.push_back(new Point(x, y, r, g, b, size));
@@ -15,4 +16,33 @@ Scribble::~Scribble(){
         delete points[i];
     }
     points.clear();
+}
+
+void Scribble::IncreaseSize() {
+    for (Point* p : points) {
+        p->IncreaseSize();
+    }
+}
+void Scribble::DecreaseSize() {
+    for (Point* p : points) {
+        p->DecreaseSize();
+    }
+}
+bool Scribble::CollidePoint(float x,float y) {
+    float min_x,min_y,max_x,max_y;
+    min_x = MAXFLOAT;
+    min_y = MAXFLOAT;
+    max_x = -MAXFLOAT;
+    max_y = -MAXFLOAT;
+    
+    for (Point* p : points) {
+        float x = p->getX();
+        float y = p->getY();
+        if (x < min_x) min_x = x;
+        if (x < min_y) min_y = y;
+        if (x > max_x) max_x = x;
+        if (x > max_y) max_y = y;
+    }
+    
+    return (min_x <= x && x <= max_x) && (min_y <= y && y <= max_y);
 }

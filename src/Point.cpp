@@ -57,3 +57,11 @@ float Point::getB() const {
 int Point::getSize() const {
     return size;
 }
+void Point::IncreaseSize() {
+    size += 1;
+}
+void Point::DecreaseSize() {
+    size -= 1;
+    if (!size) size = 1;
+}
+bool Point::CollidePoint(float x, float y) {return false;}

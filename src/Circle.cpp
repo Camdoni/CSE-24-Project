@@ -2,6 +2,7 @@
 #include <GL/freeglut.h>
 #include <GL/gl.h>
 #include <cmath>
+#include <math.h>
 
 Circle::Circle() {
     x = 0.0;
@@ -30,4 +31,19 @@ void Circle::draw() {
             glVertex2d(x + cos(theta) * radius, y + sin(theta) * radius);
         }
     glEnd();
+}
+
+void Circle::IncreaseSize() {
+    radius += 0.1;
+}
+void Circle::DecreaseSize() {
+    radius -= 0.1;
+    if (radius < 0.1) {
+        radius  = 0.1;
+    }
+}
+bool Circle::CollidePoint(float x, float y) {
+    float dx = x - this->x;
+    float dy = y - this->y;
+    return dx*dx+dy*dy <= radius*radius;
 }

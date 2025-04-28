@@ -15,6 +15,10 @@ public:
     Circle();
     Circle(float x, float y, float r, float g, float b);
     void draw();
+    void IncreaseSize();
+    void DecreaseSize();
+    bool CollidePoint(float,float);
+
 };
 
 #endif
