@@ -2,11 +2,10 @@
 #define TRIANGLE_H
 
 #include "Shape.h"
-
 class Triangle : public Shape {
     float x;
     float y;
-    float width;
+    float base;
     float height;
     float r;
     float g;
@@ -14,7 +13,8 @@ class Triangle : public Shape {
 
 public:
     Triangle();
-    Triangle(float x, float y, float r, float g, float b);
+    Triangle(float x, float y, float base, float height, float r, float g, float b);
+
     void draw();
 };
 
