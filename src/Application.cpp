@@ -133,6 +133,16 @@ void Application::onToolbarChange(bobcat::Widget* sender) {
 
 }
 
+void Application::onColorSelectorChange(bobcat::Widget* sender) {
+    Color color = colorSelector->getColor();
+
+    if (shapeSelected) {
+        std::cout << "Updating selected shape's color" << std::endl;
+        shapeSelected->setColor(color.getR(), color.getG(), color.getB());
+        canvas->redraw(); 
+    }
+}
+
 Application::Application() {
     window = new Window(100, 100, 400, 400, "Pain Application");
 
@@ -150,5 +160,6 @@ Application::Application() {
     ON_DRAG(canvas, Application::onCanvasDrag);
     ON_CHANGE(toolbar, Application::onToolbarChange);
     ON_MOUSE_UP(canvas, Application::onCanvasMouseUp);
+    ON_CHANGE(colorSelector, Application::onColorSelectorChange);
     window->show();
 }

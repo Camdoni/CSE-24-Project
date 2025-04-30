@@ -52,6 +52,11 @@ bool Polygon::CollidePoint(float mx, float my) {
     return (mx >= x - length && mx <= x + length && my >= y - length && my <= y + length);
 }
 
+void Polygon::setColor(float r, float g, float b) {
+    this->r = r;
+    this->g = g;
+    this->b = b;
+}
 
 // float truemod(float x,float y) {
 //     float a = fmod(x,y);

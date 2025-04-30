@@ -51,6 +51,12 @@ bool Triangle::CollidePoint(float mx, float my) {
     return (mx >= x - base/2 && mx <= x + base/2 && my >= y - height/2 && my <= y + height/2);
 }
 
+void Triangle::setColor(float r, float g, float b) {
+    this->r = r;
+    this->g = g;
+    this->b = b;
+}
+
 // bool Triangle::CollidePoint(float x,float y) {
 //     bool inAABB = (abs(x - this->x) <= base / 2) && (abs(y- this->y) <= height / 2);
 //     if (!inAABB) return false;

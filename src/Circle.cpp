@@ -47,3 +47,9 @@ bool Circle::CollidePoint(float x, float y) {
     float dy = y - this->y;
     return dx*dx+dy*dy <= radius*radius;
 }
+
+void Circle::setColor(float r, float g, float b) {
+    this->r = r;
+    this->g = g;
+    this->b = b;
+}

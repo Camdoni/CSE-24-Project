@@ -11,11 +11,11 @@ class Scribble: public Shape {
 public:
 
     void addPoint(float x, float y, float r, float g, float b, int size);
-
     void draw();
     void IncreaseSize();
     void DecreaseSize();
     bool CollidePoint(float,float);
+    void setColor(float r, float g, float b);
 
     ~Scribble();
 };

@@ -31,10 +31,12 @@ void Rectangle::draw() {
         glVertex2f(x - width/2, y - height/2);
     glEnd();
 }
+
 void Rectangle::IncreaseSize() {
     width += 0.1;
     height += 0.1;
 }
+
 void Rectangle::DecreaseSize() {
     width -= 0.1;
     if (width < 0.1) {
@@ -45,6 +47,13 @@ void Rectangle::DecreaseSize() {
         height = 0.1;
     }
 }
+
 bool Rectangle::CollidePoint(float mx, float my) {
     return (mx >= x - width / 2 && mx <= x + width / 2 && my <= y + height/2 && my >= y - height / 2);
+}
+
+void Rectangle::setColor(float r, float g, float b) {
+    this->r = r;
+    this->g = g;
+    this->b = b;
 }

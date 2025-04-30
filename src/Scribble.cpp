@@ -23,11 +23,13 @@ void Scribble::IncreaseSize() {
         p->IncreaseSize();
     }
 }
+
 void Scribble::DecreaseSize() {
     for (Point* p : points) {
         p->DecreaseSize();
     }
 }
+
 bool Scribble::CollidePoint(float x,float y) {
     float min_x,min_y,max_x,max_y;
     min_x = MAXFLOAT;
@@ -45,4 +47,10 @@ bool Scribble::CollidePoint(float x,float y) {
     }
     
     return (min_x <= x && x <= max_x) && (min_y <= y && y <= max_y);
+}
+
+void Scribble::setColor(float r, float g, float b) {
+    for (unsigned int i = 0; i < points.size(); i++) {
+        points[i]->setColor(r, g, b);
+    }
 }

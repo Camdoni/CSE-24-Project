@@ -21,7 +21,7 @@ public:
     void IncreaseSize();
     void DecreaseSize();
     bool CollidePoint(float,float);
-
+    void setColor(float r, float g, float b);
 
     float getX() const;
     float getY() const;

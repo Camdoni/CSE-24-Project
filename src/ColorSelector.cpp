@@ -59,6 +59,10 @@ void ColorSelector::onClick(bobcat::Widget* sender) {
     else if (sender == violetButton) {
         color = VIOLET;
     }
+    
+    if (onChangeCb) {
+        onChangeCb(this);
+    }
 
     visualizeSelectedColor();
     redraw();
