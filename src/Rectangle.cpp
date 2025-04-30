@@ -45,6 +45,6 @@ void Rectangle::DecreaseSize() {
         height = 0.1;
     }
 }
-bool Rectangle::CollidePoint(float x, float y) {
-    return (abs(x - this->x) <= width / 2) && (abs(y- this->y) <= height / 2);
+bool Rectangle::CollidePoint(float mx, float my) {
+    return (mx >= x - width / 2 && mx <= x + width / 2 && my <= y + height/2 && my >= y - height / 2);
 }

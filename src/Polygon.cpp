@@ -1,5 +1,7 @@
 #include "Polygon.h"
+#include "Canvas.h"
 #include <GL/freeglut.h>
+#include <GL/gl.h>
 #include <cmath>
 #include <math.h>
 #include <iostream>
@@ -26,11 +28,10 @@ Polygon::Polygon(float x, float y, int sides, float length, float r, float g, fl
 
 void Polygon::draw() {
     glColor3f(r, g, b);
-    
+
     glBegin(GL_POLYGON);
-        float k = 2* M_PI / sides;
-        for (int i = 0; i < sides; i++) {
-            float theta = i * k;
+        float inc = 2 * M_PI / sides;
+        for (float theta = 0; theta <= 2 * M_PI; theta += inc) {
             glVertex2f(x + length * cos(theta), y + length * sin(theta));
         }
     glEnd();
@@ -39,33 +40,40 @@ void Polygon::draw() {
 void Polygon::IncreaseSize() {
     length += 0.1;
 }
+
 void Polygon::DecreaseSize() {
     length -= 0.1;
     if (length < 0.1) {
         length = 0.1;
     }
 }
-float truemod(float x,float y) {
-    float a = fmod(x,y);
-    if (a < 0) {
-        a += y;
-    }
-    return a;
+
+bool Polygon::CollidePoint(float mx, float my) {
+    return (mx >= x - length && mx <= x + length && my >= y - length && my <= y + length);
 }
 
 
-bool Polygon::CollidePoint(float x,float y) {
-    float dy = y-this->y;
-    float dx = x-this->x;
-    float sqrDst = dx*dx+dy*dy;
-    if (sqrDst>length*length) return false;
-    double theta = atan2(dy,dx);
-    const float t_0_2 = M_PI / this->sides;
-    const float numerator = cos(t_0_2);
-    const float denominator = cos(truemod(theta, 2*t_0_2)-t_0_2);
-    float dist_inside = length * numerator / denominator;
-    std::cout << "Theta:  " << theta << std::endl;
-    std::cout << "T_0_2:  " << t_0_2 << std::endl;
-    std::cout << "Radius: " << dist_inside << std::endl;
-    return sqrDst < dist_inside*dist_inside;
-}
+// float truemod(float x,float y) {
+//     float a = fmod(x,y);
+//     if (a < 0) {
+//         a += y;
+//     }
+//     return a;
+// }
+
+
+// bool Polygon::CollidePoint(float x,float y) {
+//     float dy = y-this->y;
+//     float dx = x-this->x;
+//     float sqrDst = dx*dx+dy*dy;
+//     if (sqrDst>length*length) return false;
+//     double theta = atan2(dy,dx);
+//     const float t_0_2 = M_PI / this->sides;
+//     const float numerator = cos(t_0_2);
+//     const float denominator = cos(truemod(theta, 2*t_0_2)-t_0_2);
+//     float dist_inside = length * numerator / denominator;
+//     std::cout << "Theta:  " << theta << std::endl;
+//     std::cout << "T_0_2:  " << t_0_2 << std::endl;
+//     std::cout << "Radius: " << dist_inside << std::endl;
+//     return sqrDst < dist_inside*dist_inside;
+// }

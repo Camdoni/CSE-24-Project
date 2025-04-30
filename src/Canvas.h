@@ -17,7 +17,6 @@ public:
 
     Canvas(int x, int y, int w, int h);
 
-
     void addPoint(float x, float y, float r, float g, float b, int size);
 
     void addRectangle(float x, float y, float r, float g, float b);
@@ -36,7 +35,7 @@ public:
 
     void updateScribble(float x, float y, float r, float g, float b, int size);
 
-    void endScribble();
+    void endScribble(); 
 
     void render();
 };

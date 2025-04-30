@@ -46,21 +46,26 @@ void Triangle::DecreaseSize() {
         base = 0.1;
     }
 }
-bool Triangle::CollidePoint(float x,float y) {
-    bool inAABB = (abs(x - this->x) <= base / 2) && (abs(y- this->y) <= height / 2);
-    if (!inAABB) return false;
 
-    float top = this->y + height / 2;
-    float bottom = this->y - height / 2;
-    float left = this->x - base/2;
-    float right = this->x + base/2;
-
-
-    float distA = (left-x)*(left-x) + (top-y)*(top-y);
-    float distB = (right-x)*(right-x) + (top-y)*(top-y);
-    float distC = (this->x-x)*(this->x-x) + (bottom-y)*(bottom-y);
-
-    float minDistAB = fmin(distA,distB);
-    return distC <= minDistAB;
-
+bool Triangle::CollidePoint(float mx, float my) {
+    return (mx >= x - base/2 && mx <= x + base/2 && my >= y - height/2 && my <= y + height/2);
 }
+
+// bool Triangle::CollidePoint(float x,float y) {
+//     bool inAABB = (abs(x - this->x) <= base / 2) && (abs(y- this->y) <= height / 2);
+//     if (!inAABB) return false;
+
+//     float top = this->y + height / 2;
+//     float bottom = this->y - height / 2;
+//     float left = this->x - base/2;
+//     float right = this->x + base/2;
+
+
+//     float distA = (left-x)*(left-x) + (top-y)*(top-y);
+//     float distB = (right-x)*(right-x) + (top-y)*(top-y);
+//     float distC = (this->x-x)*(this->x-x) + (bottom-y)*(bottom-y);
+
+//     float minDistAB = fmin(distA,distB);
+//     return distC <= minDistAB;
+
+// }

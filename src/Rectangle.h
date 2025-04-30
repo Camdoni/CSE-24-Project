@@ -18,7 +18,7 @@ public:
     void draw();
     void IncreaseSize();
     void DecreaseSize();
-    bool CollidePoint(float,float);
+    bool CollidePoint(float mx, float my);
 
 };
 
