@@ -38,6 +38,7 @@ void Application::onCanvasMouseDown(bobcat::Widget* sender, float mx, float my) 
         canvas->redraw();
     }
     else if (tool == SELECT) {
+        shapeSelected = nullptr;
         std::cout << "SELECTING!" << std::endl;
         if (canvas->shapes.size()) {
             for (signed long long i = canvas->shapes.size()-1; i >=0;i--) {
@@ -49,7 +50,6 @@ void Application::onCanvasMouseDown(bobcat::Widget* sender, float mx, float my) 
                     std::cout << "(" << mx << "," << my << ")" << std::endl;
                     shapeSelected = shape;
                     shapeSelectedIndex = i;
-
                     break;
                 }   
             }
