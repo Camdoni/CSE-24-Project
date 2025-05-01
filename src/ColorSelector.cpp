@@ -99,4 +99,31 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     blueButton = new Button(x + 200, y, 50, 50, "");
     indigoButton = new Button(x + 250, y, 50, 50, "");
     violetButton = new Button(x + 300, y, 50, 50, "");
+    color = RED;
+
+    redButton->color(fl_rgb_color(255, 0, 0));
+    redButton->labelcolor(FL_WHITE);
+    orangeButton->color(fl_rgb_color(255, 127, 0));
+    orangeButton->labelcolor(FL_WHITE);
+    yellowButton->color(fl_rgb_color(255, 255, 0));
+    yellowButton->labelcolor(FL_WHITE);
+    greenButton->color(fl_rgb_color(0, 255, 0));
+    greenButton->labelcolor(FL_WHITE);
+    blueButton->color(fl_rgb_color(0, 0, 255));
+    blueButton->labelcolor(FL_WHITE);
+    indigoButton->color(fl_rgb_color(75, 0, 130));
+    indigoButton->labelcolor(FL_WHITE);
+    violetButton->color(fl_rgb_color(148, 0, 211));
+    violetButton->labelcolor(FL_WHITE);
+
+    visualizeSelectedColor();
+
+    ON_CLICK(redButton, ColorSelector::onClick);
+    ON_CLICK(orangeButton, ColorSelector::onClick);
+    ON_CLICK(yellowButton, ColorSelector::onClick);
+    ON_CLICK(greenButton, ColorSelector::onClick);
+    ON_CLICK(blueButton, ColorSelector::onClick);
+    ON_CLICK(indigoButton, ColorSelector::onClick);
+    ON_CLICK(violetButton, ColorSelector::onClick);
+
 }
