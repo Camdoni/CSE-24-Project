@@ -58,6 +58,11 @@ void Polygon::setColor(float r, float g, float b) {
     this->b = b;
 }
 
+void Polygon::setPosition(float x, float y) {
+    this->x = x;
+    this->y = y;
+}
+
 // float truemod(float x,float y) {
 //     float a = fmod(x,y);
 //     if (a < 0) {

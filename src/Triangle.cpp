@@ -57,6 +57,11 @@ void Triangle::setColor(float r, float g, float b) {
     this->b = b;
 }
 
+void Triangle::setPosition(float x, float y) {
+    this->x = x;
+    this->y = y;
+}
+
 // bool Triangle::CollidePoint(float x,float y) {
 //     bool inAABB = (abs(x - this->x) <= base / 2) && (abs(y- this->y) <= height / 2);
 //     if (!inAABB) return false;

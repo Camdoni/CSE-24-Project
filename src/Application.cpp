@@ -80,6 +80,28 @@ void Application::onCanvasDrag(bobcat::Widget* sender, float mx, float my) {
         canvas->updateScribble(mx, my, 1.0, 1.0, 1.0, 14);
         canvas->redraw();
     }
+    else if (tool == SELECT) {
+        shapeSelected = nullptr;
+        std::cout << "SELECTING!" << std::endl;
+        if (canvas->shapes.size()) {
+            for (signed long long i = canvas->shapes.size()-1; i >=0;i--) {
+                std::cout << "INDEX: "<< i << std::endl;
+
+                Shape* shape = canvas->shapes[i];
+                if (shape->CollidePoint(mx, my)) {
+                    std::cout << "Shape: " << i <<std::endl;
+                    std::cout << "(" << mx << "," << my << ")" << std::endl;
+                    shapeSelected = shape;
+                    shapeSelectedIndex = i;
+
+                    shape->setPosition(mx, my);
+                    canvas->redraw();
+                    break;
+                }   
+            }
+        }
+        
+    }
 }
 
 

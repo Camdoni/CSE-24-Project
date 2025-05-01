@@ -54,3 +54,9 @@ void Scribble::setColor(float r, float g, float b) {
         points[i]->setColor(r, g, b);
     }
 }
+
+void Scribble::setPosition(float x, float y) {
+    for (unsigned int i = 0; i < points.size(); i++) {
+        points[i]->setPosition(x, y);
+    }
+}

@@ -76,3 +76,8 @@ void Point::setColor(float r, float g, float b) {
     this->g = g;
     this->b = b;
 }
+
+void Point::setPosition(float x, float y) {
+    this->x = x;
+    this->y = y;
+}
