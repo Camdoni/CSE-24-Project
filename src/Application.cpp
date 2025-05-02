@@ -42,15 +42,11 @@ void Application::onCanvasMouseDown(bobcat::Widget* sender, float mx, float my) 
     }
     else if (tool == SELECT) {
         shapeSelected = nullptr;
-        std::cout << "SELECTING!" << std::endl;
         if (canvas->shapes.size()) {
             for (signed long long i = canvas->shapes.size()-1; i >=0;i--) {
-                std::cout << "INDEX: "<< i << std::endl;
-
                 Shape* shape = canvas->shapes[i];
                 if (shape->CollidePoint(mx, my)) {
                     std::cout << "Shape: " << i <<std::endl;
-                    std::cout << "(" << mx << "," << my << ")" << std::endl;
                     shapeSelected = shape;
                     shapeSelectedIndex = i;
                     break;
@@ -68,7 +64,15 @@ void Application::onCanvasMouseDown(bobcat::Widget* sender, float mx, float my) 
 }
 
 void Application::onCanvasMouseUp(bobcat::Widget* sender, float mx, float my) {
+#ifdef SELECT_LAST_PLACED
+    if (canvas->endScribble()) {
+        shapeSelectedIndex = canvas->shapes.size()-1;
+        shapeSelected = canvas->shapes[shapeSelectedIndex];
+    }
+#else
     canvas->endScribble();
+#endif
+
 }
 
 void Application::onCanvasDrag(bobcat::Widget* sender, float mx, float my) {
@@ -88,8 +92,12 @@ void Application::onCanvasDrag(bobcat::Widget* sender, float mx, float my) {
         canvas->redraw();
     }
     else if (tool == SELECT) {
-        shapeSelected->move(dx, dy);
-        canvas->redraw();
+        if (shapeSelected != nullptr) {
+            
+            shapeSelected->move(dx, dy);
+            canvas->redraw();
+
+        }
     }
 }
 

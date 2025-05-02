@@ -48,9 +48,9 @@ void Polygon::DecreaseSize() {
     }
 }
 
-bool Polygon::CollidePoint(float mx, float my) {
-    return (mx >= x - length && mx <= x + length && my >= y - length && my <= y + length);
-}
+// bool Polygon::CollidePoint(float mx, float my) {
+//     return (mx >= x - length && mx <= x + length && my >= y - length && my <= y + length);
+// }
 
 void Polygon::setColor(float r, float g, float b) {
     this->r = r;
@@ -63,27 +63,27 @@ void Polygon::move(float x, float y) {
     this->y += y;
 }
 
-// float truemod(float x,float y) {
-//     float a = fmod(x,y);
-//     if (a < 0) {
-//         a += y;
-//     }
-//     return a;
-// }
+float truemod(float x,float y) {
+    float a = fmod(x,y);
+    if (a < 0) {
+        a += y;
+    }
+    return a;
+}
 
 
-// bool Polygon::CollidePoint(float x,float y) {
-//     float dy = y-this->y;
-//     float dx = x-this->x;
-//     float sqrDst = dx*dx+dy*dy;
-//     if (sqrDst>length*length) return false;
-//     double theta = atan2(dy,dx);
-//     const float t_0_2 = M_PI / this->sides;
-//     const float numerator = cos(t_0_2);
-//     const float denominator = cos(truemod(theta, 2*t_0_2)-t_0_2);
-//     float dist_inside = length * numerator / denominator;
-//     std::cout << "Theta:  " << theta << std::endl;
-//     std::cout << "T_0_2:  " << t_0_2 << std::endl;
-//     std::cout << "Radius: " << dist_inside << std::endl;
-//     return sqrDst < dist_inside*dist_inside;
-// }
+bool Polygon::CollidePoint(float x,float y) {
+    float dy = y-this->y;
+    float dx = x-this->x;
+    float sqrDst = dx*dx+dy*dy;
+    if (sqrDst>length*length) return false;
+    double theta = atan2(dy,dx);
+    const float t_0_2 = M_PI / this->sides;
+    const float numerator = cos(t_0_2);
+    const float denominator = cos(truemod(theta, 2*t_0_2)-t_0_2);
+    float dist_inside = length * numerator / denominator;
+    std::cout << "Theta:  " << theta << std::endl;
+    std::cout << "T_0_2:  " << t_0_2 << std::endl;
+    std::cout << "Radius: " << dist_inside << std::endl;
+    return sqrDst < dist_inside*dist_inside;
+}

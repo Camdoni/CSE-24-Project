@@ -64,10 +64,12 @@ void Canvas::updateScribble(float x, float y, float r, float g, float b, int siz
     }
 }
 
-void Canvas::endScribble(){
+bool Canvas::endScribble(){
     if (curr){
         shapes.push_back(curr);
         curr = nullptr;
+        return true;
     }
+    return false;
 }
 

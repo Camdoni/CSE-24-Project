@@ -35,7 +35,7 @@ public:
 
     void updateScribble(float x, float y, float r, float g, float b, int size);
 
-    void endScribble(); 
+    bool endScribble(); 
 
     void render();
 };
