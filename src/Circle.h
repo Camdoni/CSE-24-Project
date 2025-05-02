@@ -3,7 +3,7 @@
 
 #include "Shape.h"
 
-class Circle : public Shape{
+class Circle : public Shape {
     float x;
     float y;
     float radius;

@@ -55,8 +55,9 @@ void Scribble::setColor(float r, float g, float b) {
     }
 }
 
-void Scribble::setPosition(float x, float y) {
+// This doesnt work properly
+void Scribble::setPosition(float mx, float my) {
     for (unsigned int i = 0; i < points.size(); i++) {
-        points[i]->setPosition(x, y);
+        points[i]->setPosition(points[i]->getX() - mx / 2, points[i]->getY() - my / 2);
     }
 }

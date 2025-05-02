@@ -10,6 +10,7 @@ void ColorSelector::deselectAllColors() {
     indigoButton->label("");
     violetButton->label("");
 }
+
 void ColorSelector::visualizeSelectedColor() {
     if (color == RED) {
         redButton->label("@+5square");
@@ -33,6 +34,7 @@ void ColorSelector::visualizeSelectedColor() {
         violetButton->label("@+5square");
     }
 }
+
 void ColorSelector::onClick(bobcat::Widget* sender) {
     deselectAllColors();
 
@@ -65,6 +67,7 @@ void ColorSelector::onClick(bobcat::Widget* sender) {
     visualizeSelectedColor();
     redraw();
 }
+
 Color ColorSelector::getColor() const {
     if (color == RED) {
         return Color(255/255.0, 0/255.0, 0/255.0);
@@ -91,6 +94,7 @@ Color ColorSelector::getColor() const {
         return Color();
     }
 }
+
 ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     redButton = new Button(x, y, 50, 50, "");
     orangeButton = new Button(x + 50, y, 50, 50, "");
@@ -125,5 +129,4 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     ON_CLICK(blueButton, ColorSelector::onClick);
     ON_CLICK(indigoButton, ColorSelector::onClick);
     ON_CLICK(violetButton, ColorSelector::onClick);
-
 }
