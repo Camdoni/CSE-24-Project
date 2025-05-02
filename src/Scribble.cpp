@@ -1,4 +1,5 @@
 #include "Scribble.h"
+#include <GL/gl.h>
 #include <iostream>
 #include <cmath>
 
@@ -6,10 +7,27 @@ void Scribble::addPoint(float x, float y, float r, float g, float b, int size){
     points.push_back(new Point(x, y, r, g, b, size));
 }
 
+
 void Scribble::draw(){
-    for (unsigned int i = 0; i < points.size(); i++){
-        points[i]->draw();
-    }
+    // We do a little bit of optimizations
+    if (!points.size()) return;
+    Point* p = points[0];
+
+    glColor3f(p->getR(),p->getG(),p->getB());
+
+    glLineWidth(p->getSize());
+    glBegin(GL_LINE_STRIP);
+        for (Point* p : points) {
+            glVertex2f(p->getX(), p->getY());
+        }
+    glEnd();
+    glPointSize(p->getSize());
+    glBegin(GL_POINTS);
+        for (Point* p : points) {
+            glVertex2f(p->getX(), p->getY());
+        }
+    glEnd();
+    
 }
 
 Scribble::~Scribble(){

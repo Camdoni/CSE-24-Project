@@ -7,7 +7,7 @@ Point::Point() {
     r = 0.0;
     g = 0.0;
     b = 0.0;
-    size = 7;
+    size = 5;
 }
 
 Point::Point(float x, float y) : Point() {
@@ -28,7 +28,6 @@ Point::Point(float x, float y, float r, float g, float b, int size) : Point(x, y
 void Point::draw() {
     glColor3f(r, g, b);
     glPointSize(size);
-
     glBegin(GL_POINTS);
         glVertex2f(x, y);
     glEnd();
