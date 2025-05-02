@@ -1,4 +1,5 @@
 #include "Scribble.h"
+#include <iostream>
 #include <cmath>
 
 void Scribble::addPoint(float x, float y, float r, float g, float b, int size){
@@ -45,7 +46,6 @@ bool Scribble::CollidePoint(float x,float y) {
         if (x > max_x) max_x = x;
         if (x > max_y) max_y = y;
     }
-    
     return (min_x <= x && x <= max_x) && (min_y <= y && y <= max_y);
 }
 
@@ -53,11 +53,11 @@ void Scribble::setColor(float r, float g, float b) {
     for (unsigned int i = 0; i < points.size(); i++) {
         points[i]->setColor(r, g, b);
     }
-}
+}    
 
-// This doesnt work properly
-void Scribble::setPosition(float mx, float my) {
-    for (unsigned int i = 0; i < points.size(); i++) {
-        points[i]->setPosition(points[i]->getX() - mx / 2, points[i]->getY() - my / 2);
+
+void Scribble::move(float dx, float dy) {
+    for (Point* p : points) {
+        p->move(dx,dy);
     }
 }

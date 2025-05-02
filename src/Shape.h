@@ -14,7 +14,7 @@ public:
     virtual void DecreaseSize() = 0;
     virtual bool CollidePoint(float,float) = 0;
     virtual void setColor(float r, float g, float b) = 0;
-    virtual void setPosition(float x, float y) = 0;
+    virtual void move(float,float) = 0;
     // Since Shape contains at least one pure virtual function
     // Shape is an Abstract Data Type
 

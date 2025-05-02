@@ -16,7 +16,7 @@ public:
     void DecreaseSize();
     bool CollidePoint(float,float);
     void setColor(float r, float g, float b);
-    void setPosition(float x, float y);
+    void move(float, float);
 
     ~Scribble();
 };

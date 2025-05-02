@@ -57,9 +57,9 @@ void Triangle::setColor(float r, float g, float b) {
     this->b = b;
 }
 
-void Triangle::setPosition(float x, float y) {
-    this->x = x;
-    this->y = y;
+void Triangle::move(float x, float y) {
+    this->x += x;
+    this->y += y;
 }
 
 // bool Triangle::CollidePoint(float x,float y) {

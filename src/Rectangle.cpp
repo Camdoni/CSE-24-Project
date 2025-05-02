@@ -58,7 +58,7 @@ void Rectangle::setColor(float r, float g, float b) {
     this->b = b;
 }
 
-void Rectangle::setPosition(float x, float y) {
-    this->x = x;
-    this->y = y;
+void Rectangle::move(float x, float y) {
+    this->x += x;
+    this->y += y;
 }

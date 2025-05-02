@@ -14,6 +14,7 @@ class Application : public bobcat::Application_ {
     ColorSelector* colorSelector;
     Shape* shapeSelected;
     size_t shapeSelectedIndex;
+    float lastMX,lastMY;
 
     void onCanvasMouseDown(bobcat::Widget* sender, float mx, float my);
     void onCanvasDrag(bobcat::Widget* sender, float mx, float my);

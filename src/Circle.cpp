@@ -54,7 +54,7 @@ void Circle::setColor(float r, float g, float b) {
     this->b = b;
 }
 
-void Circle::setPosition(float x, float y) {
-    this->x = x;
-    this->y = y;
+void Circle::move(float x, float y) {
+    this->x += x;
+    this->y += y;
 }
