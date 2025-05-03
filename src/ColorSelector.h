@@ -3,6 +3,7 @@
 
 #include <bobcat_ui/all.h>
 #include <bobcat_ui/input.h>
+#include <bobcat_ui/textbox.h>
 #include "Color.h"
 #include "Enums.h"
 
@@ -17,6 +18,7 @@ class ColorSelector : public bobcat::Group {
     bobcat::IntInput* redInput;
     bobcat::IntInput* blueInput;
     bobcat::IntInput* greenInput;
+    bobcat::TextBox* redText;
 
     COLOR color;
     void deselectAllColors();

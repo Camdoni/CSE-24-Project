@@ -1,13 +1,11 @@
 #include "ColorSelector.h"
+#include <bobcat_ui/textbox.h>
 using namespace bobcat;
 
 void ColorSelector::deselectAllColors() {
     redButton->label("");
     orangeButton->label("");
     yellowButton->label("");
-    redInput->label("R: ");
-    blueInput->label("G: ");
-    greenInput->label("B: ");
     customButton->label("custom");
 }
 
@@ -21,6 +19,7 @@ void ColorSelector::visualizeSelectedColor() {
     else if (color == YELLOW) {
         yellowButton->label("@+5square");
     }
+
     // else if (color == GREEN) {
     //     greenButton->label("@+5square");
     // }
@@ -95,9 +94,9 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     redButton = new Button(x, y, 50, 50, "");
     orangeButton = new Button(x + 50, y, 50, 50, "");
     yellowButton = new Button(x + 100, y, 50, 50, "");
-    redInput = new IntInput(x + 150, y, 50, 50, "");
-    blueInput = new IntInput(x + 200, y, 50, 50, "");
-    greenInput = new IntInput(x + 250, y, 50, 50, "");
+    redInput = new IntInput(x + 150, y+20, 50, 30, "Red");
+    blueInput = new IntInput(x + 200, y+20, 50, 30, "Green");
+    greenInput = new IntInput(x + 250, y+20, 50, 30, "Blue");
     customButton = new Button(x + 300, y, 50, 50, "custom");
     color = RED;
 
@@ -107,6 +106,7 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     orangeButton->labelcolor(FL_WHITE);
     yellowButton->color(fl_rgb_color(255, 255, 0));
     yellowButton->labelcolor(FL_WHITE);
+
     // greenButton->color(fl_rgb_color(0, 255, 0));
     // greenButton->labelcolor(FL_WHITE);
     // blueButton->color(fl_rgb_color(0, 0, 255));
