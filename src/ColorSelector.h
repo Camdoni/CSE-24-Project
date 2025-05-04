@@ -9,10 +9,10 @@
 
 class ColorSelector : public bobcat::Group {
     bobcat::Button* redButton;
-    bobcat::Button* orangeButton;
-    bobcat::Button* yellowButton;
-    // bobcat::Button* greenButton;
-    // bobcat::Button* blueButton;
+    //bobcat::Button* orangeButton;
+    //bobcat::Button* yellowButton;
+    bobcat::Button* greenButton;
+    bobcat::Button* blueButton;
     // bobcat::Button* indigoButton;
     bobcat::Button* customButton;
     bobcat::IntInput* redInput;
