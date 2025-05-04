@@ -38,6 +38,9 @@ public:
     bool endScribble(); 
 
     void render();
+
+    void eraseShape(float x,float y);
+
 };
 
 #endif

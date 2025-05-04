@@ -73,3 +73,20 @@ bool Canvas::endScribble(){
     return false;
 }
 
+void Canvas::eraseShape(float x, float y) {
+    for (auto it = shapes.begin(); it != shapes.end(); ) {
+        Shape* shape = *it;
+        if (shape->CollidePoint(x, y)) {
+            delete shape;
+            it = shapes.erase(it);
+
+        } else {
+            ++it;
+        }
+    }
+}
+
+
+
+
+
