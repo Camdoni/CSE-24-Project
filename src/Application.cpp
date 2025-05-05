@@ -110,10 +110,12 @@ void Application::onToolbarChange(bobcat::Widget* sender) {
     else if (action == SEND_TO_BACK) {
         std::cout << "SEND TO BACK" <<std::endl;
         if (canvas->shapes.size() && shapeSelected != nullptr) {
-            if (canvas->shapes[shapeSelectedIndex] == shapeSelected) {
-                Shape* first = canvas->shapes[0];
+            if ((shapeSelectedIndex < canvas->shapes.size()) && 
+             canvas->shapes[shapeSelectedIndex] == shapeSelected) {
+                for (size_t i = shapeSelectedIndex; i>0;i--) {
+                    canvas->shapes[i] = canvas->shapes[i-1];
+                }
                 canvas->shapes[0] = shapeSelected;
-                canvas->shapes[shapeSelectedIndex] = first;
                 shapeSelectedIndex = 0;
             }
         } 
@@ -122,10 +124,15 @@ void Application::onToolbarChange(bobcat::Widget* sender) {
     else if (action == SEND_TO_FRONT) {
         std::cout << "SEND TO FRONT" <<std::endl;
         if (canvas->shapes.size() && shapeSelected != nullptr) {
-            if (canvas->shapes[shapeSelectedIndex] == shapeSelected) {
-                Shape* last = canvas->shapes[canvas->shapes.size()-1];
+            if ((shapeSelectedIndex < canvas->shapes.size()) && 
+             canvas->shapes[shapeSelectedIndex] == shapeSelected) {
+                for (size_t i = shapeSelectedIndex; i < canvas->shapes.size()-1;i++) {
+                    canvas->shapes[i] = canvas->shapes[i+1];
+                }
+
+                // Shape* last = canvas->shapes[canvas->shapes.size()-1];
                 canvas->shapes[canvas->shapes.size()-1] = shapeSelected;
-                canvas->shapes[shapeSelectedIndex] = last;
+                // canvas->shapes[shapeSelectedIndex] = last;
                 shapeSelectedIndex = canvas->shapes.size()-1;
             }
         } 
